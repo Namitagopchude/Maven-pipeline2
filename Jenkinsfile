@@ -1,21 +1,19 @@
 pipeline {
-  agent {
-    label 'NamitaNode'
-  }
+  agent { label 'NamitaNode'}
 
   tools{
       maven 'apache-maven-3.9.9'
-  }
+    }
 
   parameters {
-  choice choices: ['Test ', 'Prod'], name: 'Select Environment'
-}
+    choice choices: ['Test ', 'Prod'], name: 'Select Environment'
+   }
 
   stages {
         stage('build') {
-        steps {
-            bat 'mvn clean package -Denforcer.skip=true -DskipTests=true'
-        }
+            steps {
+                bat 'mvn clean package -Denforcer.skip=true -DskipTests=true'
+            }
         
         }
 
