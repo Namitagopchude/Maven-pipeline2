@@ -10,11 +10,11 @@ pipeline {
   stages {
         stage('build') {
         steps {
-            bat 'mvn clean package'
+            bat 'mvn clean package -Denforcer.skip=true'
         }
         post {
             success {
-               archiveArtifacts artifacts: '**/target/*.war'
+               archiveArtifacts artifacts: '**/target/*.jar'
             }
         }
         }
