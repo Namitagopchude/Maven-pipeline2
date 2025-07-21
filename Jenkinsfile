@@ -3,14 +3,18 @@ pipeline {
     label 'NamitaNode'
   }
 
+  tools{
+      maven 'apache-maven-3.9.9'
+  }
+
   stages {
         stage('build') {
         steps {
-                bat 'mvn clean package'
+            bat 'mvn clean package'
         }
         post {
             success {
-            archiveArtifacts artifacts: '**/*.xml',
+               archiveArtifacts artifacts: '**/target/*.war'
             }
         }
         }
