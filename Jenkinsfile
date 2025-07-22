@@ -32,6 +32,7 @@ pipeline {
                 stage('test B')
                 {
                      agent { label 'ayushinode' }
+                     tools{ maven 'Ayushi-maven'}
                      steps{
                         echo "This is test B"
                         bat 'mvn test'
