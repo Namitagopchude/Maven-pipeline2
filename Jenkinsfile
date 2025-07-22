@@ -53,7 +53,7 @@ pipeline {
 
             agent { label 'NamitaNode'}
             when{
-                    expression {params.select_environments == Test}
+                    expression {params.select_environments == 'Test'}
                     beforeAgent true
                 }
 
