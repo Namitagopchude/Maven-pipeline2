@@ -51,7 +51,8 @@ pipeline {
 
         stage('deploy') {
 
-            when { expression {params.select_environments == 'Test'} beforeAgent true } 
+            when { expression {params.select_environments == 'Test'} 
+            beforeAgent true } 
     
             agent { label 'NamitaNode'}
             steps {
