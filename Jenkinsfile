@@ -50,13 +50,9 @@ pipeline {
         }
 
         stage('deploy') {
-
-            when { expression {params.select_environments =='Test'} 
-            beforeAgent true } 
-    
-            agent { label 'NamitaNode'}
+            
             steps {
-                bat "echo Selected environment is '${params.select_environments}'"
+               
                 bat 'java -jar "%WORKSPACE%/target/my-app-1.0-SNAPSHOT.jar"'
                  
             }
