@@ -1,5 +1,5 @@
 pipeline {
-  agent { label 'NamitaNode'}
+   agent { label 'NamitaNode' }
 
   tools{
       maven 'apache-maven-3.9.9'
@@ -49,11 +49,11 @@ pipeline {
         }
 
         stage('deploy') {
-            
+
+            agent { label 'NamitaNode'}
             when{
                     expression {params.select_environments == Test}
                     beforeAgent true
-                    agent { label 'NamitaNode'}
                 }
 
             steps {
