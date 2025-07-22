@@ -6,7 +6,7 @@ pipeline {
     }
 
   parameters {
-    choice choices: ['Test ', 'Prod'], name: 'Select Environment'
+    choice choices: ['Test ', 'Prod'], name: 'select_environments'
    }
 
   stages {
@@ -19,9 +19,9 @@ pipeline {
 
         stage('test') {
           parallel {
-                stage('test A')
+                stage('testA')
                 {
-                    agent { label 'NamitaNode'}
+                    agent { label 'NamitaNode' }
                     steps{
                         echo "This is test A"
                         bat 'mvn test'
@@ -31,7 +31,7 @@ pipeline {
 
                 stage('test B')
                 {
-                     agent { label 'ayushinode'}
+                     agent { label 'ayushinode' }
                      steps{
                         echo "This is test B"
                         bat 'mvn test'
@@ -49,13 +49,14 @@ pipeline {
         }
 
         stage('deploy') {
+            
             when{
                     expression {params.select_environments == Test}
                     beforeAgent true
                     agent { label 'NamitaNode'}
-                 }
+                }
 
-          steps {
+            steps {
 
                 bat 'java -jar "%WORKSPACE%/target/my-app-1.0-SNAPSHOT.jar"'
                  
