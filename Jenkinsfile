@@ -50,7 +50,7 @@ pipeline {
         }
         stage('SonarQube Analysis') {
             steps{
-              bat 'mvn clean verify sonar:sonar -Dsonar.projectKey=Jenkins-maven -Dsonar.projectName='Jenkins-maven''
+              bat 'mvn clean verify sonar:sonar -Dsonar.projectKey=Jenkins-maven -Dsonar.projectName="Jenkins-maven"'
             }
         }
 
