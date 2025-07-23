@@ -50,13 +50,9 @@ pipeline {
         }
         stage('SonarQube Analysis') {
 
-            environment {
-             SONAR_URL = "http://localhost:9000"
-            }
-
             steps {
               withCredentials([string(credentialsId: 'Namita_Sonar', variable: 'Namita_Sonar')]) {
-                bat 'mvn sonar:sonar -Dsonar.login=$Namita_Sonar -Dsonar.host.url=${SONAR_URL}'
+                bat 'mvn sonar:sonar -Dsonar.projectKey=Jenkins-maven -Dsonar.projectName="Jenkins-maven"-Dsonar.login=$Namita_Sonar'
               }
             }
             
