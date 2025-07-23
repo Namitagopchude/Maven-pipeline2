@@ -51,7 +51,7 @@ pipeline {
         stage('SonarQube Analysis') {
 
             environment {
-             SONAR_URL = "http://172.27.59.58:9000"
+             SONAR_URL = "http://localhost:9000"
             }
 
             steps {
