@@ -52,7 +52,7 @@ pipeline {
 
             steps {
               withCredentials([string(credentialsId: 'Namita_Sonar', variable: 'Namita_Sonar')]) {
-                bat 'mvn sonar:sonar -Dsonar.projectKey=Jenkins-maven -Dsonar.projectName="Jenkins-maven"-Dsonar.login=$Namita_Sonar'
+                bat 'mvn sonar:sonar -Dsonar.projectKey=Jenkins-maven -Dsonar.projectName="Jenkins-maven" -Dsonar.login=%Namita_Sonar%'
               }
             }
             
