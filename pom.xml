@@ -47,6 +47,11 @@
           </archive>
         </configuration>
       </plugin>
+       <plugin>
+        <groupId>org.sonarsource.scanner.maven</groupId>
+        <artifactId>sonar-maven-plugin</artifactId>
+        <version>6.2.1.4610</version>
+      </plugin>
     </plugins>
   </build>
 </project>
