@@ -3,7 +3,6 @@ pipeline {
 
   tools{
       maven 'apache-maven-3.9.9'
-      SonarQube Scanner 'SonarQube_Scanner_7.1'
     }
 
   parameters {
