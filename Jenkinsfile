@@ -48,9 +48,18 @@ pipeline {
             }
         
         }
+        stage('SonarQube Analysis') {
+            steps{
+              bat 'mvn clean verify sonar:sonar -Dsonar.projectKey=Jenkins-maven -Dsonar.projectName='Jenkins-maven''
+            }
+        }
 
         stage('deploy') {
-            
+
+            when { expression {params.select_environments =='Test'} 
+            beforeAgent true } 
+    
+            agent { label 'NamitaNode'}
             steps {
                
                 bat 'java -jar "%WORKSPACE%/target/my-app-1.0-SNAPSHOT.jar"'
