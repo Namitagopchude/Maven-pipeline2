@@ -3,6 +3,7 @@ pipeline {
 
   tools{
       maven 'apache-maven-3.9.9'
+      SonarQube Scanner 'SonarQube_Scanner1.7'
     }
 
   parameters {
@@ -49,9 +50,17 @@ pipeline {
         
         }
         stage('SonarQube Analysis') {
-            steps{
-              bat 'mvn clean verify sonar:sonar'
+
+            environment {
+             SONAR_URL = "http://172.27.59.58:9000"
             }
+
+            steps {
+              withCredentials([string(credentialsId: 'Namita_Sonar', variable: 'Namita_Sonar')]) {
+                bat 'mvn sonar:sonar -Dsonar.login=$Namita_Sonar -Dsonar.host.url=${SONAR_URL}'
+              }
+            }
+            
         }
 
         stage('deploy') {
